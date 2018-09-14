@@ -36,6 +36,11 @@ module.exports = {
     new CleanWebpackPlugin('dist'),
     new HtmlWebpackPlugin({ template: path.join(__dirname, 'src', 'index.html') }),
     new MiniCSSExtractPlugin({ filename: 'style.css' }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/img/*.png', to: 'img/[name].[ext]', force: true, toType: 'template',
+      },
+    ], { debug: 'info' }),
   ],
   devServer: {
     historyApiFallback: true
